@@ -11,28 +11,17 @@ public class Util {
     private static String DB_USER = "root";
     private static String DB_PASS = "root";
 
-    private Connection connect;
+    private static Connection connect;
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         connect = null;
         try {
             Class.forName(DB_DRIVER);
             connect = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-            System.out.println("Успешная попытка подключения");
         } catch (SQLException | RuntimeException | ClassNotFoundException e) {
-            System.out.println("Неудачная попытка подключения");
             return null;
         }
         return connect;
     }
-//    public void closeConnection(Connection connect) throws SQLException {
-//        try{
-//            connect.close();
-//            System.out.println("Подключение успешно закрыто");
-//        }
-//        catch(SQLException e){
-//            System.out.println("Закрытие подключения выдало ошибку");
-//        }
-//    }
 
 }
